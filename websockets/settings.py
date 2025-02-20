@@ -18,6 +18,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "django_extensions",
+    
     "apps.accounts",
     "apps.chat",
 ]
@@ -55,8 +57,12 @@ WSGI_APPLICATION = "websockets.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": config('ENGINE'),
+        "NAME": config('NAME'),
+        'USER': config('USER'),
+        "PASSWORD": config('PASSWORD'),
+        "HOST": config('HOST'),
+        'PORT': config('PORT'),
     }
 }
 
