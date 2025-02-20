@@ -1,6 +1,7 @@
 from distutils.command.config import config
 from pathlib import Path
 from decouple import config
+from django.conf.global_settings import AUTH_USER_MODEL
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,9 +83,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = config('TIME_ZONE')
 
 USE_I18N = True
 
@@ -94,8 +95,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-
-
-
+AUTH_USER_MODEL = "accounts.User"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
