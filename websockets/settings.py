@@ -1,7 +1,5 @@
-from distutils.command.config import config
 from pathlib import Path
 from decouple import config
-from django.conf.global_settings import AUTH_USER_MODEL
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -12,6 +10,8 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    "channels",
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "django_extensions",
-    
+
     "apps.accounts",
     "apps.chat",
 ]
@@ -54,6 +54,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "websockets.wsgi.application"
+ASGI_APPLICATION = "websockets.asgi.application"
 
 
 DATABASES = {
@@ -96,5 +97,6 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 AUTH_USER_MODEL = "accounts.User"
+LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
