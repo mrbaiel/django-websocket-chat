@@ -1,4 +1,3 @@
-from distutils.command.config import config
 from pathlib import Path
 from decouple import config
 
@@ -11,6 +10,8 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    "channels",
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -19,7 +20,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "django_extensions",
-    
+
     "apps.accounts",
     "apps.chat",
 ]
@@ -53,6 +54,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "websockets.wsgi.application"
+ASGI_APPLICATION = "websockets.asgi.application"
 
 
 DATABASES = {
@@ -82,9 +84,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = config('TIME_ZONE')
 
 USE_I18N = True
 
@@ -94,8 +96,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-
-
-
+AUTH_USER_MODEL = "accounts.User"
+LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

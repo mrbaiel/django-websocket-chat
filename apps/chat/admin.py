@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.chat.models import Group, Message, Event
+
+admin.site.register(Group)
+admin.site.register(Message)
+admin.site.register(Event)
+
