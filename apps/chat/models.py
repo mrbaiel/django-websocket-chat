@@ -1,11 +1,9 @@
 from uuid import uuid4
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
-from apps.accounts.admin import CustomUserAdmin
 
 User = get_user_model()
 
@@ -24,12 +22,12 @@ class Group(models.Model):
 
     def add_user_to_group(self, user: User):
         self.members.add(user)
-        self.event_set.create('Join', user=user)
+        self.event_set.create('Join', user=user) # Устанавливаем значение join в поле type
         self.save()
 
     def remove_user_from_group(self, user: User):
         self.members.remove(user)
-        self.event_set.create('Left', user=user)
+        self.event_set.create('Left', user=user) # Устанавливаем значение left в поле type
         self.save()
 
 
