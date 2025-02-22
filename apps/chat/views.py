@@ -41,7 +41,7 @@ class GroupChatView(LoginRequiredMixin, DetailView):
 
         # Получаем сообщения и события
         messages = group.message_set.all()
-        events = group.events_set.all()
+        events = group.event_set.all()
 
         message_and_event_list = [*messages, *events]
         sorted_message_event_list = sorted(message_and_event_list, key=lambda x: x.timestamp)

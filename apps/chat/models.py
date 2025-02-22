@@ -1,7 +1,7 @@
-from uuid import uuid4
-
 from django.contrib.auth import get_user_model
 from django.db import models
+from uuid import uuid4
+
 from django.urls import reverse
 
 
@@ -15,7 +15,7 @@ class Group(models.Model):
     members = models.ManyToManyField(User)
 
     def __str__(self):
-        return "Группа {self.name} - {self.uuid}"
+        return f"Группа {self.name} - {self.uuid}"
 
     def get_absolute_url(self):
         return reverse('group', args=[str(self.uuid)])

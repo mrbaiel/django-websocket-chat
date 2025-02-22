@@ -1,10 +1,9 @@
- <!-- /templates/chat/groupchat.html -->
-{% extends 'chat/base.html'%} 
-{% block title %} Chat Room{% endblock title %}
+{% extends 'chat/base.html'%}
+{% block title %} Чат {% endblock title %}
 {% block content %}
 <textarea id="chat-log" cols="100" rows="20"></textarea><br>
 <input id="chat-message-input" type="text" size="100"><br>
-<input id="chat-message-submit" type="button" value="Send">
+<input id="chat-message-submit" type="button" value="Отправить">
 
 <script>
     document.querySelector('#chat-log').value = ""
@@ -15,7 +14,7 @@
 </script>
 
 
-<h3>Group Members</h3>
+<h3>Участники группы</h3>
 <ul id="members">
 {% for member in group_members %}
 <li id="members-{{ member.username }}">{{ member }}</li>
