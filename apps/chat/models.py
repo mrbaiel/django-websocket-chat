@@ -49,7 +49,7 @@ class Event(models.Model):
         ('Left', 'left'),
     ]
     type = models.CharField(choices=CHOICES, max_length=5)
-    description = models.CharField(help_text='Описание произошедшего события',\
+    description = models.CharField(help_text='Описание произошедшего события',
                                    max_length=50, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
